@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TextInput } from 'react-native';
 import { TextField } from 'react-native-material-textfield';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
+import { StackActions, NavigationActions } from 'react-navigation';
 
 import { white, deep, buttonStyles } from '../utils/styles';
 import { deckCreate } from '../actions';
@@ -55,7 +55,7 @@ class DeckAdd extends Component {
     api.deckCreate(name).
       then(() => this.props.deckCreate(name));
 
-    const resetAction = NavigationActions.init({
+    const resetAction = StackActions.reset({
       index: 1,
       actions: [
         NavigationActions.navigate({
